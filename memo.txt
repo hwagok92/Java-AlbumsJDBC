@@ -1,0 +1,157 @@
+
+drop sequence albumseq;
+create sequence albumseq
+	increment by 1
+	start with 1 
+	minvalue 1
+	maxvalue 100
+	nocache ; -- 설명 적어놓기
+	
+
+drop table albums;
+create table albums(
+num number primary key,
+song varchar2(30) not null,
+singer varchar2(30) not null,
+company varchar2(20) not null,
+price number  default 0,
+pub_day date default sysdate
+);
+
+insert into albums(num,song,singer,company,price,pub_day)
+values(albumseq.nextval,'바운스','조용필','다음',5000,'2014/1/26');
+
+insert into albums(num,song,singer,company,pub_day)
+values(albumseq.nextval,'미스코리아','이효리','네이버','2014/1/26');
+
+insert into albums(num,song,singer,company,price,pub_day)
+values(albumseq.nextval,'badgirl','이효리','네이버',1000,'2012/1/06');
+
+
+insert into albums(num,song,singer,company,price,pub_day)
+values(albumseq.nextval,'허공','조용필','네이버',7000,'2014/3/26');
+
+insert into albums(num,song,singer,company,price,pub_day)
+values(albumseq.nextval,'허공','조용필','네이버',3000,'2011/2/26');
+
+insert into albums(num,song,singer,company,pub_day)
+values(albumseq.nextval,'hello','조용필','구글','2013/7/1');
+
+insert into albums(num,song,singer,company,price,pub_day)
+values(albumseq.nextval,'좋은 날','아이유','다음',2000,'2006/12/3');
+
+insert into albums(num,song,singer,company,price,pub_day)
+values(albumseq.nextval,'마시멜로','아이유','네이버',4000,'2001/4/7');
+
+insert into albums(num,song,singer,company,price)
+values(albumseq.nextval,'단발머리','조용필','다음',8000);
+
+commit;
+
+ col number for 99;
+ col song for a10;
+ col singer for a10;
+ col company for a10;
+select * from albums;
+
+ =====================================================
+ [실행결과]
+ 
+ 
+======메뉴 선택하기======
+1.모든 정보 조회
+2.조건 검색
+3.가격 범위조건 검색(가격:내림차순, 가수:오름차순)
+4.앨범 수정
+5.앨범 삭제
+6.앨범 추가
+7.정렬
+8.프로그램 종료
+메뉴 선택 >> 1
+번호	노래제목	가수	회사	가격	발매일	
+1    	 바운스     	 조용필  	 다음    	 5000 	 2014-01-26
+2    	 미스코리아   	 이효리  	 네이버   	 0    	 2014-01-26
+3    	 badgirl 	 이효리  	 네이버   	 1000 	 2012-01-06
+4    	 허공      	 조용필  	 네이버   	 7000 	 2014-03-26
+5    	 허공      	 조용필  	 네이버   	 3000 	 2011-02-26
+6    	 hello   	 조용필  	 구글    	 0    	 2013-07-01
+7    	 좋은 날    	 아이유  	 다음    	 2000 	 2006-12-03
+8    	 마시멜로    	 아이유  	 네이버   	 4000 	 2001-04-07
+9    	 단발머리    	 조용필  	 다음    	 8000 	 2016-09-07
+
+======메뉴 선택하기======
+1.모든 정보 조회
+2.조건 검색
+3.가격 범위조건 검색(가격:내림차순, 가수:오름차순)
+4.앨범 수정
+5.앨범 삭제
+6.앨범 추가
+7.정렬
+8.프로그램 종료
+메뉴 선택 >> 2
+제목검색:1     가수검색:2     회사검색:3    
+검색할 항목을 선택 : 2
+검색할 가수 입력 : 이
+검색한 항목은 : 2 건 입니다.
+
+번호	노래제목	가수		회사		가격		발매일	
+7	좋은 날	아이유	다음		2000	2006-12-03	
+8	마시멜로	아이유	네이버	4000	2001-04-07	
+
+======메뉴 선택하기======
+1.모든 정보 조회
+2.조건 검색
+3.가격 범위조건 검색(가격:내림차순, 가수:오름차순)
+4.앨범 수정
+5.앨범 삭제
+6.앨범 추가
+7.정렬
+8.프로그램 종료
+메뉴 선택 >> 3
+
+시작등수 입력 : 2
+끝등수 입력 : 6
+
+번호	노래제목		가수	    회사 	가격		발매일
+6	hello		조용필	구글	 	8000	2013-07-01	
+9	단발머리		조용필	다음	 	6000	2014-07-09	
+1	바운스		조용필	다음	 	5000	2014-01-26	
+8	마시멜로		아이유	네이버	4000	2001-04-07	
+5	친구여		조용필	걸리버	3000	2012-01-02	
+
+======메뉴 선택하기======
+1.모든 정보 조회
+2.조건 검색
+3.가격 범위조건 검색(가격:내림차순, 가수:오름차순)
+4.앨범 수정
+5.앨범 삭제
+6.앨범 추가
+7.정렬
+8.프로그램 종료
+메뉴 선택 >> 7
+정렬할 항목 선택하세요.
+번호:1      노래제목:2      가수명:3         번호입력>> 2
+정렬방법 선택하세요
+오름차순:1     내림차순:2       번호입력>> 2
+
+검색한 항목은 : 8 건 입니다.
+번호	노래제목		가수	회사	가격	발매일	
+4	허공			조용필		네이버	3000	2014-03-26	
+5	친구여		조용필		걸리버	3000	2012-01-02	
+7	좋은 날		아이유		다음		2000	2006-12-03	
+1	바운스		조용필		다음		5000	2014-01-26	
+8	마시멜로		아이유		네이버	4000	2001-04-07	
+9	단발머리		조용필		다음		6000	2014-07-09	
+6	hello		조용필		구글		8000	2013-07-01	
+10	Mr.애매모호	마마무		걸리버	8000	2014-05-05	
+
+======메뉴 선택하기======
+1.모든 정보 조회
+2.조건 검색
+3.가격 범위조건 검색(가격:내림차순, 가수:오름차순)
+4.앨범 수정
+5.앨범 삭제
+6.앨범 추가
+7.정렬
+8.프로그램 종료
+메뉴 선택 >> 
